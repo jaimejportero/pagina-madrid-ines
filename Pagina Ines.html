@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Inés ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blanco: #faf9f6;
+    --dorado: #c8a44a;
+    --dorado-claro: #e8c97a;
+    --madrid-azul: #003087;
+    --oscuro: #1a1208;
+    --crema: #f5f0e8;
+    --verde-salud: #2d8a5e;
+    --rosa-kids: #e87d8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanco);
+    color: var(--oscuro);
+    overflow-x: hidden;
+  }
+
+  /* ───── HERO ───── */
+  .hero {
+    min-height: 100vh;
+    background: var(--oscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,164,74,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(200,164,74,0.10) 0%, transparent 60%);
+  }
+
+  .hero-badge {
+    background: var(--dorado);
+    color: var(--oscuro);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 14vw, 11rem);
+    font-weight: 900;
+    color: var(--blanco);
+    line-height: 0.9;
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+
+  .hero-title span {
+    color: var(--dorado);
+    display: block;
+    font-style: italic;
+  }
+
+  .hero-sub {
+    margin-top: 2rem;
+    color: rgba(250,249,246,0.55);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-align: center;
+    max-width: 500px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.7s;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(250,249,246,0.35);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.2s;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(200,164,74,0.8), transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .corona {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    position: absolute;
+    top: -0.2em;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 20px rgba(200,164,74,0.5));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* ───── SECCIONES ───── */
+  section {
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  p.body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 620px;
+  }
+
+  /* ───── MADRID ───── */
+  .madrid-section {
+    background: var(--oscuro);
+    color: var(--blanco);
+    overflow: hidden;
+  }
+
+  .madrid-section .tag { color: var(--dorado); }
+  .madrid-section h2 em { color: var(--dorado); font-style: italic; }
+
+  .madrid-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .stat-card {
+    border: 1px solid rgba(200,164,74,0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: rgba(200,164,74,0.05);
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .stat-card:hover {
+    background: rgba(200,164,74,0.12);
+    border-color: rgba(200,164,74,0.5);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--dorado);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(250,249,246,0.6);
+    margin-top: 0.3rem;
+  }
+
+  .bellingham-quote {
+    margin-top: 3rem;
+    border-left: 3px solid var(--dorado);
+    padding: 1.5rem 2rem;
+    background: rgba(200,164,74,0.05);
+    border-radius: 0 12px 12px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(250,249,246,0.85);
+  }
+
+  .bellingham-quote cite {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: var(--dorado);
+    margin-top: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ───── ENFERMERA ───── */
+  .enfermera-section {
+    background: var(--crema);
+  }
+
+  .enfermera-section .tag { color: var(--verde-salud); }
+  .enfermera-section h2 em { color: var(--verde-salud); font-style: italic; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.4rem;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .skill-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+
+  .skill-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .skill-text strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-text span {
+    font-size: 0.82rem;
+    color: #666;
+    font-weight: 300;
+  }
+
+  .pediatrica-banner {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, var(--verde-salud), #1d6b47);
+    color: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .pediatrica-banner::after {
+    content: '👶🏻';
+    position: absolute;
+    right: 2rem;
+    font-size: 5rem;
+    opacity: 0.2;
+  }
+
+  .pediatrica-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pediatrica-banner p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+
+  /* ───── FOODIE ───── */
+  .foodie-section {
+    background: white;
+  }
+
+  .foodie-section .tag { color: #c0522a; }
+  .foodie-section h2 em { color: #c0522a; font-style: italic; }
+
+  .food-scroll {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 3rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+  }
+
+  .food-scroll::-webkit-scrollbar { display: none; }
+
+  .food-card {
+    flex-shrink: 0;
+    width: 200px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--crema);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.25s;
+  }
+
+  .food-card:hover { transform: scale(1.04) rotate(-1deg); }
+
+  .food-emoji {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: linear-gradient(135deg, #fde8d0, #fbd5b5);
+  }
+
+  .food-info {
+    padding: 1rem;
+  }
+
+  .food-info strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .food-info span {
+    font-size: 0.78rem;
+    color: #888;
+    font-weight: 300;
+  }
+
+  .rating {
+    color: var(--dorado);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+  }
+
+  /* ───── ANIMALES ───── */
+  .animales-section {
+    background: var(--crema);
+  }
+
+  .animales-section .tag { color: #6b4226; }
+  .animales-section h2 em { color: #6b4226; font-style: italic; }
+
+  .animales-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    .animales-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .animal-card {
+    aspect-ratio: 1;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: white;
+    font-size: 3rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    cursor: default;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animal-card:hover {
+    transform: scale(1.07) rotate(2deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .animal-card span {
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: #777;
+    letter-spacing: 0.05em;
+  }
+
+  /* ───── FINAL ───── */
+  .final-section {
+    background: var(--oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 8rem 2rem;
+  }
+
+  .final-section .tag { color: var(--dorado); display: block; margin-bottom: 1.5rem; }
+
+  .final-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+  }
+
+  .final-section h2 em {
+    color: var(--dorado);
+    font-style: italic;
+  }
+
+  .final-section p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    font-weight: 300;
+    color: rgba(250,249,246,0.7);
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .corazon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--dorado);
+    color: var(--oscuro);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 1rem 2.2rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .corazon-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(200,164,74,0.4);
+  }
+
+  .corazon-btn:active {
+    transform: scale(0.97);
+  }
+
+  .hearts-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .floating-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: floatHeart 2.5s ease-out forwards;
+    pointer-events: none;
+  }
+
+  /* ───── SCROLL REVEAL ───── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ───── DIVIDER ───── */
+  .divider {
+    width: 40px;
+    height: 3px;
+    background: currentColor;
+    margin-bottom: 2rem;
+    opacity: 0.3;
+    border-radius: 999px;
+  }
+
+  /* ───── ANIMATIONS ───── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-12px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
+  }
+
+  @keyframes floatHeart {
+    0%   { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+  }
+
+  /* ───── NÚMERO ENFERMERA ───── */
+  .nurse-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--verde-salud);
+    color: white;
+    border-radius: 12px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 600px) {
+    .madrid-stats { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .pediatrica-banner { flex-direction: column; }
+    .pediatrica-banner::after { right: 1rem; bottom: 0.5rem; font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CORAZONES FLOTANTES -->
+<div class="hearts-container" id="heartsContainer"></div>
+
+<!-- ───── HERO ───── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">Esta página es tuya ✦ Solo tuya</div>
+  <h1 class="hero-title">
+    <div class="corona">👑</div>
+    Inés
+    <span>la de siempre</span>
+  </h1>
+  <p class="hero-sub">Enfermera, madridista, gourmand, fan de los peques y de todo bicho viviente. Básicamente, una persona de diez.</p>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>baja</span>
+  </div>
+</section>
+
+<!-- ───── MADRID ───── -->
+<section class="madrid-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="tag">⚽ Hala Madrid</span>
+      <div class="divider" style="background: var(--dorado); opacity: 0.5;"></div>
+      <h2>Fan del <em>mejor club</em><br>del mundo mundial</h2>
+      <p class="body" style="color: rgba(250,249,246,0.65);">No es que le guste el Madrid. Es que el Madrid forma parte de su identidad, como el fonendo al cuello o el café de las 8 de la mañana antes del turno. Y si hay un partido, ni se te ocurra llamarla.</p>
+    </div>
+
+    <div class="madrid-stats reveal" style="transition-delay: 0.1s;">
+      <div class="stat-card">
+        <span class="stat-num">15★</span>
+        <div class="stat-label">Champions del Madrid.<br>Y las que quedan.</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">#5</span>
+        <div class="stat-label">Bellingham.<br>Su favorito.</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">∞</span>
+        <div class="stat-label">Partidos que ha visto.<br>Con más o menos nervios.</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">0</span>
+        <div class="stat-label">Tolerancia hacia<br>el Barça. Cero.</div>
+      </div>
+    </div>
+
+    <div class="bellingham-quote reveal" style="transition-delay: 0.2s;">
+      "Hay personas que brillan con luz propia. Bellingham la tiene en el campo; Inés, en todo lo demás."
+      <cite>— Análisis objetivo e imparcial</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ───── ENFERMERA ───── -->
+<section class="enfermera-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="tag" style="color: var(--verde-salud);">🩺 Vocación</span>
+      <div class="divider" style="background: var(--verde-salud);"></div>
+      <h2>No es solo enfermera.<br>Es <em>la enfermera.</em></h2>
+      <p class="body">De las que los pacientes preguntan: "¿Hoy viene Inés?" Tiene manos de las que curan y una paciencia que debería estar patentada. Y su sueño es trabajar con los más pequeños, porque con ellos la vida tiene otro color.</p>
+    </div>
+
+    <div class="skills-grid reveal" style="transition-delay: 0.1s;">
+      <div class="skill-item">
+        <div class="skill-icon">💉</div>
+        <div class="skill-text">
+          <strong>Pinchazo sin llorar</strong>
+          <span>Arte que domina. Al paciente, claro.</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-icon">📋</div>
+        <div class="skill-text">
+          <strong>Memoria de elefante</strong>
+          <span>Recuerda el nombre, el diagnóstico y el café que le gusta a cada uno.</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-icon">😄</div>
+        <div class="skill-text">
+          <strong>Sonrisa obligatoria</strong>
+          <span>Incluso a las 7 AM con turno de 12 horas. Misterio sin resolver.</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-text">
+          <strong>Calma bajo presión</strong>
+          <span>Donde otros entran en pánico, ella pone el carro de curas.</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-icon">☕</div>
+        <div class="skill-text">
+          <strong>Experta en descansos</strong>
+          <span>El café de media mañana es sagrado. No se negocia.</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-icon">❤️</div>
+        <div class="skill-text">
+          <strong>Empatía nivel Dios</strong>
+          <span>Siente lo que siente el paciente. Y aun así, sonríe.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pediatrica-banner reveal" style="transition-delay: 0.2s;">
+      <div>
+        <h3>Enfermera Pediátrica: el plan</h3>
+        <p>Porque hay pocas cosas más bonitas en el mundo que curar a un niño. Y ella lo sabe. Cuando llegue ese día, los peques van a tener a la mejor del hospital. Y sus padres también.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOODIE ───── -->
+<section class="foodie-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="tag" style="color: #c0522a;">🍽️ Gourmand</span>
+      <div class="divider" style="background: #c0522a;"></div>
+      <h2>Sale a comer<br><em>con criterio.</em></h2>
+      <p class="body">No es que vaya a restaurantes. Es que los evalúa. Presentación, sabor, ambiente, precio y si la ensaimada está a la altura. Tiene un radar para los sitios buenos que debería monetizar.</p>
+    </div>
+
+    <div class="food-scroll reveal" style="transition-delay: 0.1s;">
+      <div class="food-card">
+        <div class="food-emoji">🥩</div>
+        <div class="food-info">
+          <strong>La carne</strong>
+          <span>Buen punto de cocción o no es plan</span>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-emoji">🍝</div>
+        <div class="food-info">
+          <strong>La pasta</strong>
+          <span>Si está al dente, se queda. Si no, adiós</span>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-emoji">🍣</div>
+        <div class="food-info">
+          <strong>El japonés</strong>
+          <span>El plan perfecto para cualquier día</span>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-emoji">🥐</div>
+        <div class="food-info">
+          <strong>El desayuno</strong>
+          <span>No cualquier desayuno. El de sitio con encanto</span>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-emoji">🍦</div>
+        <div class="food-info">
+          <strong>El postre</strong>
+          <span>Obligatorio. No es opción, es protocolo</span>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-emoji">☕</div>
+        <div class="food-info">
+          <strong>El café</strong>
+          <span>Solo, corto y que esté bien hecho, por favor</span>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── ANIMALES ───── -->
+<section class="animales-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="tag" style="color: #6b4226;">🐾 Amante de los animales</span>
+      <div class="divider" style="background: #6b4226;"></div>
+      <h2>Con cualquier animal<br><em>se derrite.</em></h2>
+      <p class="body">Da igual el tamaño, la especie, si muerde o si maúlla. Inés los mira y automáticamente le cambia la cara. Es una reacción involuntaria, como respirar pero con más "¡¡ay qué monoooo!!"</p>
+    </div>
+
+    <div class="animales-grid reveal" style="transition-delay: 0.1s;">
+      <div class="animal-card">🐶<span>El favorito favorito</span></div>
+      <div class="animal-card">🐱<span>También, claro</span></div>
+      <div class="animal-card">🐰<span>Que ternura</span></div>
+      <div class="animal-card">🐻<span>Hasta el oso</span></div>
+      <div class="animal-card">🦆<span>Con los patos pato</span></div>
+      <div class="animal-card">🐾<span>Cualquier bicho</span></div>
+      <div class="animal-card">🐴<span>Los caballos molan</span></div>
+      <div class="animal-card" style="background: linear-gradient(135deg,#fde8d0,#fbd5b5);">✨<span>Todos, en general</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FINAL ───── -->
+<section class="final-section">
+  <div class="section-inner" style="max-width: 700px; margin: 0 auto;">
+    <span class="tag">Para Inés ✦</span>
+    <h2>La persona más<br><em>de diez</em> que conozco.</h2>
+    <p>Madridista empedernida, enfermera con vocación, foodie de nivel, amante de los animales y futura enfermera pediátrica que va a hacer llorar de emoción a más de una madre. Y encima buena persona. ¿De verdad existe alguien así?</p>
+    <button class="corazon-btn" onclick="lanzarCorazones()">
+      <span>❤️</span>
+      <span>Pulsa si eres la mejor</span>
+    </button>
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Corazones
+  function lanzarCorazones() {
+    const container = document.getElementById('heartsContainer');
+    const emojis = ['❤️','💛','🧡','💚','💜','🤍','⭐','👑','🌟'];
+    for (let i = 0; i < 35; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.bottom = '5vh';
+        heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
+        heart.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        heart.style.animationDelay = (Math.random() * 0.5) + 's';
+        container.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }, i * 60);
+    }
+  }
+</script>
+</body>
+</html>
